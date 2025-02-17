@@ -137,4 +137,9 @@ Feel free to submit issues and enhancement requests!
   We are working on integrating support for running large language models locally via Ollama. This enhancement will allow:
   - Offline processing of image-based event extraction.
   - Reduced dependency on cloud APIs.
-  - Enhanced customization and potentially improved response times in environments with limited connectivity. 
+  - Enhanced customization and potentially improved response times in environments with limited connectivity.
+
+## Follow Us
+Stay connected and join the conversation:
+- Follow us on [Twitter (@Pedrete666)](https://twitter.com/Pedrete666)
+- Follow us on [Bluesky (@pedroid999.bsky.social)](https://bsky.app/profile/pedroid999.bsky.social) 
