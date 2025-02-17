@@ -1,11 +1,12 @@
 # Google Calendar Event Generator from Images
 
-This application uses OpenAI's GPT-4 Vision model to extract event details from images and automatically creates events in Google Calendar using the Google Calendar API via LangChain.
+This application uses OpenAI's GPT-4o multi-modal model to extract event details from images and automatically creates events in Google Calendar using the Google Calendar API via LangChain.
+
 
 ## Prerequisites
 
 - Python 3.11 or higher
-- OpenAI API key with GPT-4 Vision access
+- OpenAI API key with GPT-4o
 - Google Cloud Project with Calendar API enabled
 - Google OAuth 2.0 credentials
 
@@ -73,7 +74,7 @@ python main.py path/to/your/image.jpg
    - The authentication tokens will be saved locally as `token.json`
 
 4. The script will:
-   - Analyze the image using GPT-4 Vision
+   - Analyze the image using GPT-4o 
    - Extract event details including:
      * Event title
      * Start date and time
@@ -113,7 +114,7 @@ The application includes comprehensive error handling for:
 ## Troubleshooting
 
 1. **OpenAI API Issues**:
-   - Ensure your API key is valid and has access to GPT-4 Vision
+   - Ensure your API key is valid and has access to GPT-4o
    - Check your API usage and limits
 
 2. **Google Calendar API Issues**:
@@ -128,4 +129,12 @@ The application includes comprehensive error handling for:
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests! 
+Feel free to submit issues and enhancement requests!
+
+## Upcoming Features
+
+- **Ollama Local LLMs Support**:  
+  We are working on integrating support for running large language models locally via Ollama. This enhancement will allow:
+  - Offline processing of image-based event extraction.
+  - Reduced dependency on cloud APIs.
+  - Enhanced customization and potentially improved response times in environments with limited connectivity. 
