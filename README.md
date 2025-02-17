@@ -1,6 +1,6 @@
 # Google Calendar Event Generator from Images
 
-This application uses OpenAI's GPT-4o multi-modal model to extract event details from images and automatically creates events in Google Calendar using the Google Calendar API via LangChain.
+This application uses OpenAI's GPT-4o multi-modal model via LangChain, to extract event details from images and automatically creates events in Google Calendar using the Google Calendar API. 
 
 
 ## Prerequisites
@@ -143,3 +143,4 @@ Feel free to submit issues and enhancement requests!
 Stay connected and join the conversation:
 - Follow us on [Twitter (@Pedrete666)](https://twitter.com/Pedrete666)
 - Follow us on [Bluesky (@pedroid999.bsky.social)](https://bsky.app/profile/pedroid999.bsky.social) 
+  - Enhanced customization and potentially improved response times in environments with limited connectivity. 
