@@ -1,6 +1,6 @@
 # Google Calendar Event Generator
 
-This application uses OpenAI's GPT-4 Vision model to extract event details from images and automatically creates events in Google Calendar. It consists of a Python FastAPI backend and a Next.js frontend with TypeScript and Tailwind CSS.
+This application uses OpenAI's GPT-4o model to extract event details from images and automatically creates events in Google Calendar. It consists of a Python FastAPI backend and a Next.js frontend with TypeScript and Tailwind CSS.
 
 ## Project Structure
 
@@ -29,7 +29,7 @@ This application uses OpenAI's GPT-4 Vision model to extract event details from 
 
 - Python 3.11 or higher
 - Node.js 18 or higher
-- OpenAI API key with GPT-4 Vision access
+- OpenAI API key with GPT-4o access
 - Google Cloud Project with Calendar API enabled
 - Google OAuth 2.0 credentials
 - VS Code (recommended for debugging)
@@ -188,7 +188,7 @@ The `debug.py` module provides:
 1. Open your browser and navigate to `http://localhost:3000`
 2. Upload an image containing event information
 3. The application will:
-   - Process the image using GPT-4 Vision
+   - Process the image using GPT-4o
    - Extract event details
    - Create an event in your Google Calendar
    - Provide a link to view the created event
