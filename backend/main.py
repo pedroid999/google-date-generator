@@ -47,7 +47,7 @@ def setup_google_credentials() -> Credentials:
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                'config/credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         
         with open('token.json', 'w') as token:
@@ -64,7 +64,7 @@ def encode_image(image_path: str) -> str:
 
 def extract_event_details(image_path: str) -> Dict[str, Any]:
     """
-    Extract event details from an image using OpenAI's GPT-4 Vision.
+    Extract event details from an image using OpenAI's GPT-4o.
     """
     try:
         # Read the default timezone from the environment variable, defaulting to "America/Los_Angeles" if not provided.
