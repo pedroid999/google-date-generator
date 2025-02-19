@@ -68,14 +68,14 @@ def extract_event_details(image_path: str) -> Dict[str, Any]:
     """
     try:
         # Read the default timezone from the environment variable, defaulting to "America/Los_Angeles" if not provided.
-        default_timezone = os.getenv("DEFAULT_TIMEZONE", "America/Los_Angeles")
+        default_timezone = os.getenv("DEFAULT_TIMEZONE", "Europe/Madrid")
         
         client = openai.OpenAI()
         
         # Encode the image to base64
         base64_image = encode_image(image_path)
         
-        # Prepare the prompt for GPT-4 Vision using the default timezone from .env
+        # Prepare the prompt for GPT-4o using the default timezone from .env
         prompt = f"""Please analyze this image and extract event details. 
         Return the information in the following JSON format:
         {{
