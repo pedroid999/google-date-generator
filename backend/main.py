@@ -14,7 +14,7 @@ from typing import Dict, Any
 from datetime import datetime
 from pathlib import Path
 
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 from PIL import Image
 from google.oauth2.credentials import Credentials
@@ -70,7 +70,7 @@ def extract_event_details(image_path: str) -> Dict[str, Any]:
         # Read the default timezone from the environment variable, defaulting to "America/Los_Angeles" if not provided.
         default_timezone = os.getenv("DEFAULT_TIMEZONE", "Europe/Madrid")
         
-        client = openai.OpenAI()
+        client = OpenAI()
         
         # Encode the image to base64
         base64_image = encode_image(image_path)
