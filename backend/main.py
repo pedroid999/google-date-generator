@@ -39,18 +39,38 @@ def setup_google_credentials() -> Credentials:
     Set up and return Google Calendar API credentials.
     """
     creds = None
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    token_path = 'token.json'
     
+    # Try to load existing credentials
+    if os.path.exists(token_path):
+        try:
+            creds = Credentials.from_authorized_user_file(token_path, SCOPES)
+            
+            # Try to refresh if expired
+            if not creds.valid:
+                if creds.expired and creds.refresh_token:
+                    try:
+                        creds.refresh(Request())
+                    except Exception as e:
+                        logger.warning(f"Error refreshing token: {str(e)}")
+                        # If refresh fails, remove the token file and create new credentials
+                        os.remove(token_path)
+                        creds = None
+        except Exception as e:
+            logger.warning(f"Error loading credentials: {str(e)}")
+            # If loading fails, remove the token file and create new credentials
+            if os.path.exists(token_path):
+                os.remove(token_path)
+            creds = None
+    
+    # If no valid credentials are available, create new ones
     if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'config/credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+        flow = InstalledAppFlow.from_client_secrets_file(
+            'config/credentials.json', SCOPES)
+        creds = flow.run_local_server(port=0)
         
-        with open('token.json', 'w') as token:
+        # Save the credentials for future use
+        with open(token_path, 'w') as token:
             token.write(creds.to_json())
     
     return creds
@@ -70,7 +90,11 @@ def extract_event_details(image_path: str) -> Dict[str, Any]:
         # Read the default timezone from the environment variable, defaulting to "America/Los_Angeles" if not provided.
         default_timezone = os.getenv("DEFAULT_TIMEZONE", "Europe/Madrid")
         
-        client = OpenAI()
+        # Initialize OpenAI client with explicit parameters to avoid picking up any deprecated configurations
+        # This ensures we don't pass unsupported parameters like 'proxies'
+        client = OpenAI(
+            api_key=os.getenv("OPENAI_API_KEY")
+        )
         
         # Encode the image to base64
         base64_image = encode_image(image_path)
